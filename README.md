@@ -19,6 +19,8 @@ To run the application clone down the repo and run `npm install` and `yarn insta
 
 Development of this app will be done in phases. Each phase of the app is listed below with its various requirements. GitHub issues will be created that mirror these requirements. Waffle.io will be used to track the progress of the various issues. The moon phase emoji's seen below will be updated to indicate development progress. A new moon means the issues has not been started yet, a full moon means it has been completed and merged into master.
 
+https://waffle.io/ianlancaster/we-the-people
+
 PHASES:
 
   🌑  🌒  🌓  🌔  🌝
@@ -27,7 +29,7 @@ PHASES:
 
     🌓 Determine Phases and add to GitHub
     🌓 Create MVP prototype
-    🌑 Create better read-me
+    🌝 Create better read-me
     🌑 Make project structure determinations
     🌑 Get CORS Express Server Working
 
