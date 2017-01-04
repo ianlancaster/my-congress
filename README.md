@@ -29,8 +29,8 @@ PHASES:
 
     🌝 Determine Phases and add to GitHub
     🌝 Create better read-me
-    🌑 Make project structure determinations
-    🌑 Get CORS Express Server Working
+    🌝 Make project structure determinations
+    🌓 Get CORS Express Server Working
 
   Phase 1: MVP
 
