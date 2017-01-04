@@ -27,8 +27,7 @@ PHASES:
 
   Phase 0: Project Preparation
 
-    🌓 Determine Phases and add to GitHub
-    🌓 Create MVP prototype
+    🌝 Determine Phases and add to GitHub
     🌝 Create better read-me
     🌑 Make project structure determinations
     🌑 Get CORS Express Server Working

@@ -7,6 +7,12 @@ const compress = require('compression')
 
 const app = express()
 
+
+
+const server = app.listen(3001, () => {
+  console.log('Backend server listening on port 3001')
+})
+
 // This rewrites all routes requests to the root /index.html file
 // (ignoring file requests). If you want to implement universal
 // rendering, you'll want to remove this middleware.
