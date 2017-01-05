@@ -7,8 +7,6 @@ const compress = require('compression')
 
 const app = express()
 
-
-
 const server = app.listen(3001, () => {
   console.log('Backend server listening on port 3001')
 })
