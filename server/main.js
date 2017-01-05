@@ -7,8 +7,10 @@ const compress = require('compression')
 
 const app = express()
 
-const server = app.listen(3001, () => {
-  console.log('Backend server listening on port 3001')
+app.use(require('routes/apiEndpoint'))
+
+const server = app.listen(3001, () => { // eslint-disable-line
+  console.log('express server listening on port 3001')
 })
 
 // This rewrites all routes requests to the root /index.html file
