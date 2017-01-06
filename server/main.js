@@ -7,7 +7,7 @@ const compress = require('compression')
 
 const app = express()
 
-app.use(require('routes/apiEndpoint'))
+app.use(require('./routes/bills'))
 
 const server = app.listen(3001, () => { // eslint-disable-line
   console.log('express server listening on port 3001')
