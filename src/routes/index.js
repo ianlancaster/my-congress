@@ -6,7 +6,9 @@ import Hello from '../globals/Hello'
 const Routes = () => {
   return (
     <Router history={hashHistory}>
-      <Route path='/' component={Hello} />
+      <Route path='/' component={Hello}>
+        <Route path='/hello' component={Hello} />
+      </Route>
     </Router>
   )
 }
