@@ -8,7 +8,7 @@ class Bills extends Component {
         <h1>Bills</h1>
         <button onClick={showBills}>Show Bills</button>
         <section id='bills-list'>
-          {billNames && (billNames.map(billName => <h3>{billName}</h3>))}
+          {billNames && (billNames.map((billName, i) => <h3 key={i}>{billName}</h3>))}
         </section>
       </div>
     )

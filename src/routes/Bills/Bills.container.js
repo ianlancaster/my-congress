@@ -7,8 +7,8 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  billNames: state.Bills.billNames
+  billNames: state.bills.billNames
 })
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Bills)
-export default connect(null, mapDispatchToProps)(Bills)
+export default connect(mapStateToProps, mapDispatchToProps)(Bills)

@@ -9,10 +9,10 @@ export const showBills = () => ({
 ACTION_HANDLERS = {
   ...ACTION_HANDLERS,
   SHOW_BILLS: (state, action) => {
-    console.log('ping')
+    console.log('state: ', state)
     return {
       ...state,
-      billNames: state.billNames.push('Look a bill name!')
+      billNames: [...state.billNames, 'ummm... hello?']
     }
   }
 }
@@ -20,7 +20,7 @@ ACTION_HANDLERS = {
 // ------------------------------------
 // Reducers
 // ------------------------------------
-const initialState = { billNames: [] }
+const initialState = { billNames: ['HEEEeeeeLLLlllloooOOOooo'] }
 
 export default function billsReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
