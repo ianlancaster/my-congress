@@ -1,15 +1,34 @@
-import React from 'react'
-import { Route } from 'react-router'
-import Bills from './Bills.component.js'
-import BillsContainer from './Bills.container.js'
+// import React from 'react'
+// import { Route } from 'react-router'
+// import Bills from './Bills.component'
+// import BillsContainer from './Bills.container'
+//
+// const Routes = () => {
+//   return (
+//     <Route path='/bills' component={BillsContainer} />
+//   )
+// }
+//
+// export default Routes
 
-console.log(Bills)
-console.log(BillsContainer)
+import { injectReducer } from '../../store/reducers'
 
-const Routes = () => {
-  return (
-    <Route path='/bills' component={Bills} />
-  )
-}
+export default (store) => ({
+  path: 'bills',
+  getComponent (nextState, next) {
+    require.ensure([
+      './Bills.container',
+      './Bills.modules'
+    ], (require) => {
+      const Bills = require('./Bills.container').default
+      const billsReducer = require('./Bills.modules').default
 
-export default Routes
+      injectReducer(store, {
+        key: 'bills',
+        reducer: billsReducer
+      })
+
+      next(null, Bills)
+    })
+  }
+})

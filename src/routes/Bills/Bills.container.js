@@ -10,4 +10,5 @@ const mapStateToProps = (state, ownProps) => ({
   billNames: state.Bills.billNames
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Bills)
+// export default connect(mapStateToProps, mapDispatchToProps)(Bills)
+export default connect(null, mapDispatchToProps)(Bills)

@@ -8,10 +8,13 @@ export const showBills = () => ({
 })
 ACTION_HANDLERS = {
   ...ACTION_HANDLERS,
-  SHOW_BILLS: (state, action) => ({
-    ...state,
-    billNames: state.billNames.push('Look a bill name!')
-  })
+  SHOW_BILLS: (state, action) => {
+    console.log('ping')
+    return {
+      ...state,
+      billNames: state.billNames.push('Look a bill name!')
+    }
+  }
 }
 
 // ------------------------------------
