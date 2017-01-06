@@ -5,7 +5,6 @@ import { Router, useRouterHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import createStore from './store/createStore'
 import { Provider } from 'react-redux'
-import __DEBUG__ from 'debug'
 
 const MOUNT_ELEMENT = document.getElementById('root')
 
