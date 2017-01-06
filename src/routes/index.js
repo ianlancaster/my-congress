@@ -8,7 +8,6 @@ const Routes = () => {
   return (
     <Router history={hashHistory}>
       <Route path='/' component={CoreLayout}>
-        {/* <Route path='/bills' component={Bills} /> */}
         {Bills()}
       </Route>
     </Router>
