@@ -2,12 +2,12 @@ import React from 'react'
 import { Router, Route, hashHistory } from 'react-router'
 
 import Bills from './Bills.component.js'
-import Hello from '../../globals/Hello'
+import CoreLayout from '../../globals/CoreLayout'
 
 const Routes = () => {
   return (
     <Route path='/bills' component={Bills}>
-      <Route path='/bills/hello' component={Hello} />
+      <Route path='/bills/hello' component={CoreLayout} />
     </Route>
   )
 }

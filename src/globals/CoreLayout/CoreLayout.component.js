@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 
-class Hello extends Component {
+class CoreLayout extends Component {
   render () {
     return (
       <div>
-        <h2>Hello World!</h2>
+        <h2>CoreLayout World!</h2>
         {this.props.children}
       </div>
     )
   }
 }
 
-module.exports = Hello
+module.exports = CoreLayout
 //
 //
 // import React, { Component } from 'react';
