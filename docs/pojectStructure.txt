@@ -21,7 +21,7 @@
 │   │       └── assets                  # Directory | 🔵 | Assets needed to render component
 │   │       └── Component.component.js  # File      | ✅ | React component (smart or dumb)
 │   │       └── Component.styles.scss   # File      | ☝️ | Styles specific to component
-│   │       └── Component.container.js  # File      | ☝️ | Component redux container
+│   │       └── Component.container.js  # File      | ✅ | Component redux container
 │   │       └── Component.module.js     # File      | ☝️ | Redux Actions and Reducers
 │   │       └── Component.spec.js       # File      | ☝️ | Component test file
 │   │       └── index.js                # File      | ✅ | Component entry point. Routs to either component or container
@@ -31,7 +31,7 @@
 │   │       └── assets                  # Directory | 🔵 | Assets needed to render component
 │   │       └── Route.component.js      # File      | ✅ | React component (smart or dumb)
 │   │       └── Route.styles.scss       # File      | ☝️ | Styles specific to component
-│   │       └── Route.container.js      # File      | ☝️ | Component redux container
+│   │       └── Route.container.js      # File      | ✅ | Component redux container
 │   │       └── Route.module.js         # File      | ☝️ | Redux Actions and Reducers
 │   │       └── Route.spec.js           # File      | ☝️ | Component test file
 │   │       └── index.js                # File      | ✅ | Modular react route

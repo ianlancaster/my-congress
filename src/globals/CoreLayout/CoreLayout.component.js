@@ -12,19 +12,3 @@ class CoreLayout extends Component {
 }
 
 module.exports = CoreLayout
-//
-//
-// import React, { Component } from 'react';
-//
-// class App extends Component {
-//   render() {
-//     return (
-//       <div>
-//         <HeaderContainer />
-//         { this.props.children }
-//       </div>
-//     );
-//   }
-// }
-//
-// module.exports = App;
