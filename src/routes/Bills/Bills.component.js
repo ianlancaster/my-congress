@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react'
+import classes from './Bills.styles.scss'
+console.log(classes)
 
 class Bills extends Component {
   render () {
     const { showBills, billNames, fetchBills } = this.props
     return (
       <div>
-        <h1>Bills</h1>
+        <h1 className={classes.bill}>Bills</h1>
         <button onClick={showBills}>Show Bills</button>
         <button onClick={fetchBills}>Fetch Actual Bills</button>
         <section id='bills-list'>

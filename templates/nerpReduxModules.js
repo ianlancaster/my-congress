@@ -8,59 +8,10 @@
 // // // ------------------------------------
 // // // OUTPUT
 // // // ------------------------------------
-
 // ------------------------------------
 // Actions
 // ------------------------------------
 let ACTION_HANDLERS = {}
-
-export const thunkExample = () => {
-  return (dispatch) => {
-    dispatch(requestThunk())
-    return fetch('https://pre.domain.ext/endpoint')
-      .then(data => data.json())
-      .then(json => dispatch(recieveThunk(json)))
-      .catch(err => dispatch(recieveErr(err)))
-  }
-}
-
-const requestThunk = () => ({
-  type: 'REQUEST_THUNK'
-})
-ACTION_HANDLERS = {
-  ...ACTION_HANDLERS,
-  REQUEST_THUNK: (state) => ({
-    ...state,
-    fetching: true
-  })
-}
-
-const recieveThunk = (json) => ({
-  type: 'RECIEVE_THUNK',
-  payload: json
-})
-ACTION_HANDLERS = {
-  ...ACTION_HANDLERS,
-  RECIEVE_THUNK: (state, action) => ({
-    ...state,
-    existingStateArr: state.existingStateArr.push(action.payload),
-    newStateProp: action.payload.newStateProp,
-    fetching: false
-  })
-}
-
-const recieveErr = (err) => ({
-  type: 'RECIEVE_ERR',
-  payload: err
-})
-ACTION_HANDLERS = {
-  ...ACTION_HANDLERS,
-  RECIEVE_ERR: (state, action) => ({
-    ...state,
-    err: action.payload,
-    fetching: false
-  })
-}
 
 export const exampleAction = () => ({
   type: 'EXAMPLE_ACTION'
@@ -77,7 +28,7 @@ ACTION_HANDLERS = {
 // Reducers
 // ------------------------------------
 
-const initialState = { fetching: false }
+const initialState = {}
 
 export default function exampleReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
@@ -88,9 +39,36 @@ export default function exampleReducer (state = initialState, action) {
 // // // ------------------------------------
 // // // INPUT
 // // // ------------------------------------
-'tabstop engineered snippet goes here'
+// ------------------------------------
+// Actions
+// ------------------------------------
+let ACTION_HANDLERS = {}
+
+export const ${3:exampleAction} = () => ({
+  type: '${4:EXAMPLE_ACTION}'${5}
+})
+ACTION_HANDLERS = {
+  ...ACTION_HANDLERS,
+  ${4:EXAMPLE_ACTION}: (state, action) => ({
+    ...state,
+    ${6:toggleState: !toggleState}${7}
+  })
+}${8}
+
+// ------------------------------------
+// Reducers
+// ------------------------------------
+
+const initialState = {}
+
+export default function ${1:exampleReducer} (state = initialState, action) {
+  const handler = ACTION_HANDLERS[action.type]
+
+  return handler ? handler(state, action) : state
+}
+
 
 // // // ------------------------------------
 // // // GENERATED
 // // // ------------------------------------
-'oneline generated snippet goes here'
+'// ------------------------------------\n// Actions\n// ------------------------------------\nlet ACTION_HANDLERS = {}\n\nexport const ${3:exampleAction} = () => ({\n\ttype: \'${4:EXAMPLE_ACTION}\'${5}\n})\nACTION_HANDLERS = {\n\t...ACTION_HANDLERS,\n\t${4:EXAMPLE_ACTION}: (state, action) => ({\n\t\t...state,\n\t\t${6:toggleState: !toggleState}${7}\n\t})\n}${8}\n\n// ------------------------------------\n// Reducers\n// ------------------------------------\n\nconst initialState = {}\n\nexport default function ${1:exampleReducer} (state = initialState, action) {\n\tconst handler = ACTION_HANDLERS[action.type]\n\n\treturn handler ? handler(state, action) : state\n}\n'
