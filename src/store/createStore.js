@@ -7,14 +7,14 @@ import reducers from './reducers'
 export default (initialState = {}, history) => {
   let middleware = applyMiddleware(thunk, routerMiddleware(history))
 
-  // // Use DevTools chrome extension in development
-  // if (__DEBUG__) {
-  //   const devToolsExtension = window.devToolsExtension
-  //
-  //   if (typeof devToolsExtension === 'function') {
-  //     middleware = compose(middleware, devToolsExtension())
-  //   }
-  // }
+  // Use DevTools chrome extension in development
+  if (__DEBUG__) {
+    const devToolsExtension = window.devToolsExtension
+
+    if (typeof devToolsExtension === 'function') {
+      middleware = compose(middleware, devToolsExtension())
+    }
+  }
 
   const store = createStore(reducers(), initialState, middleware)
 
