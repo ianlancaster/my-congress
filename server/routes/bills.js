@@ -8,7 +8,11 @@ router.get('/api/bills', (req, res) => {
   .then(data => ({
     billNames: data.results.map(bill => `${bill.official_title.slice(0, 80)}...`)
   }))
-  .then(structuredData => res.json(structuredData))
+  .then(structuredData => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+    res.json(structuredData)
+  })
   .catch(err => res.json(err))
 })
 

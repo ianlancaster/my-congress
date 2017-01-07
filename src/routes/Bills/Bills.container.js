@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'
-import { showBills } from './Bills.modules'
+import { showBills, fetchBills } from './Bills.modules'
 import Bills from './Bills.component'
 
 const mapDispatchToProps = {
-  showBills
+  showBills,
+  fetchBills
 }
 
 const mapStateToProps = (state, ownProps) => ({
