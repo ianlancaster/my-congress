@@ -11,7 +11,6 @@ export const showBills = () => ({
 ACTION_HANDLERS = {
   ...ACTION_HANDLERS,
   SHOW_BILLS: (state, action) => {
-    console.log('state: ', state)
     return {
       ...state,
       billNames: [...state.billNames, 'ummm... hello?']
@@ -41,7 +40,6 @@ ACTION_HANDLERS = {
 }
 
 const recieveBills = (json) => {
-  console.log(json)
   return {
     type: 'RECIEVE_BILLS',
     payload: json.billNames

@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react'
 import classes from './Bills.styles.scss'
-console.log(classes)
 
 class Bills extends Component {
   render () {

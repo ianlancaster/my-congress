@@ -11,13 +11,12 @@
 
 .outlet {
   position: absolute;
-  top: 91px;
+  top: 107px;
   left: 22px;
   width: 303px;
-  height: 534px;
+  height: 517px;
   background-color: white;
-  overflow-wrap: break-word;
-  overflow-y: auto;
+
 
   @media (max-width : 400px) {
     width: 100%;
