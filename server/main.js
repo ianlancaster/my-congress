@@ -7,10 +7,16 @@ const compress = require('compression')
 
 const app = express()
 
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  next()
+})
 
+app.use(require('./routes/bills'))
 
-const server = app.listen(3001, () => {
-  console.log('Backend server listening on port 3001')
+const server = app.listen(3001, () => { // eslint-disable-line
+  console.log('express server listening on port 3001')
 })
 
 // This rewrites all routes requests to the root /index.html file
