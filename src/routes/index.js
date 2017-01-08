@@ -16,7 +16,7 @@
 //
 // export default Routes
 
-import CoreLayout from '../globals/CoreLayout'
+import CoreLayout from 'globals/CoreLayout'
 
 export const createRoutes = (store) => {
   const routes = {
