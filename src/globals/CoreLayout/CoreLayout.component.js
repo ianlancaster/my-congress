@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
+import Iphone from 'globals/Iphone'
 
 class CoreLayout extends Component {
   render () {
@@ -9,6 +10,10 @@ class CoreLayout extends Component {
       </div>
     )
   }
+}
+
+CoreLayout.propTypes = {
+  children: PropTypes.node
 }
 
 module.exports = CoreLayout

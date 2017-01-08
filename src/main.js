@@ -5,6 +5,7 @@ import { Router, useRouterHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import createStore from './store/createStore'
 import { Provider } from 'react-redux'
+import 'styles/core.scss'
 
 const MOUNT_ELEMENT = document.getElementById('root')
 
@@ -26,7 +27,13 @@ let render = (key = null) => {
   const routes = require('./routes/index').default(store)
   const App = (
     <Provider store={store}>
-      <div style={{ height: '100%' }}>
+      <div style={{
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column'
+      }}>
         <Router history={history} children={routes} key={key} />
       </div>
     </Provider>

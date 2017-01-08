@@ -16,12 +16,12 @@
 //
 // export default Routes
 
-import CoreLayout from 'globals/CoreLayout'
+import Iphone from 'globals/Iphone'
 
 export const createRoutes = (store) => {
   const routes = {
     path: '/',
-    component: CoreLayout,
+    component: Iphone,
     getChildRoutes (location, next) {
       require.ensure([], (require) => {
         next(null, [
