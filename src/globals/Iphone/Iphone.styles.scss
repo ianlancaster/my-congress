@@ -16,6 +16,8 @@
   width: 303px;
   height: 534px;
   background-color: white;
+  overflow-wrap: break-word;
+  overflow-y: auto;
 
   @media (max-width : 400px) {
     width: 100%;
