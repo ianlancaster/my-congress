@@ -34,6 +34,7 @@ PHASES:
 
   Phase 1: MVP
 
+    🌝 Implement iPhone container frame
     🌑 Implement top and bottom app navigation. Only add bills in main nav
     🌔 Display a list of bill preview components (cards) that show name
     🌑 Bill identifier
