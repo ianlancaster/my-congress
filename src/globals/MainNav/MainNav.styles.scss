@@ -1,0 +1,11 @@
+@import "../../styles/base";
+
+.mainNav {
+  background-color: $darkBlue;
+  height: 50px;
+  margin-top: -10px;
+
+  @include mobile {
+
+	}
+}
