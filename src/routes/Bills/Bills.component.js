@@ -12,11 +12,11 @@ class Bills extends Component {
     fetchBills()
   }
   render () {
-    const { billNames } = this.props
+    const { bills } = this.props
     return (
       <div>
         <section id='bills-list'>
-          {billNames && (billNames.map((billName, i) => <Bill key={i} billName={billName} />))}
+          {bills && (bills.map((bill, i) => <Bill key={i} billName={bill.official_title} />))}
         </section>
       </div>
     )
@@ -24,9 +24,8 @@ class Bills extends Component {
 }
 
 Bills.propTypes = {
-  showBills: PropTypes.func.isRequired,
   fetchBills: PropTypes.func.isRequired,
-  billNames: PropTypes.arrayOf(PropTypes.string)
+  bills: PropTypes.arrayOf(PropTypes.object)
 }
 
 module.exports = Bills

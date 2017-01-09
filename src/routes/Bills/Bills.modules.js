@@ -5,19 +5,6 @@ import fetch from 'isomorphic-fetch'
 // ------------------------------------
 let ACTION_HANDLERS = {}
 
-export const showBills = () => ({
-  type: 'SHOW_BILLS'
-})
-ACTION_HANDLERS = {
-  ...ACTION_HANDLERS,
-  SHOW_BILLS: (state, action) => {
-    return {
-      ...state,
-      billNames: [...state.billNames, 'ummm... hello?']
-    }
-  }
-}
-
 export const fetchBills = () => {
   return (dispatch) => {
     dispatch(requestBills())
@@ -43,14 +30,14 @@ const recieveBills = (json) => {
   console.log(json)
   return {
     type: 'RECIEVE_BILLS',
-    payload: json.billNames
+    payload: json
   }
 }
 ACTION_HANDLERS = {
   ...ACTION_HANDLERS,
   RECIEVE_BILLS: (state, action) => ({
     ...state,
-    billNames: action.payload,
+    bills: action.payload,
     fetching: false
   })
 }
@@ -71,7 +58,7 @@ ACTION_HANDLERS = {
 // ------------------------------------
 // Reducers
 // ------------------------------------
-const initialState = { billNames: ['HEEEeeeeLLLlllloooOOOooo'] }
+const initialState = { bills: [] }
 
 export default function billsReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]

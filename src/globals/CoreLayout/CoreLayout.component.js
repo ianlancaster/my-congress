@@ -7,7 +7,6 @@ class CoreLayout extends Component {
   constructor () {
     super()
     this.state = {
-      mainHeight: 400,
       scrollTop: 0,
       downScroll: 0,
       showNav: true
