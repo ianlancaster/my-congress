@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import classes from './Bills.styles.scss'
+import Bill from 'globals/Bill'
 
 class Bills extends Component {
   render () {
@@ -10,7 +11,7 @@ class Bills extends Component {
         <button onClick={showBills}>Show Bills</button>
         <button onClick={fetchBills}>Fetch Actual Bills</button>
         <section id='bills-list'>
-          {billNames && (billNames.map((billName, i) => <h3 key={i}>{billName}</h3>))}
+          {billNames && (billNames.map((billName, i) => <Bill key={i} billName={billName} />))}
         </section>
       </div>
     )

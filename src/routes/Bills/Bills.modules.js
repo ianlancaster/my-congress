@@ -40,6 +40,7 @@ ACTION_HANDLERS = {
 }
 
 const recieveBills = (json) => {
+  console.log(json)
   return {
     type: 'RECIEVE_BILLS',
     payload: json.billNames
