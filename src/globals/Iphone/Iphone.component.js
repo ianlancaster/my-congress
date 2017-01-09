@@ -15,4 +15,8 @@ const Iphone = ({ children }) => {
   )
 }
 
+Iphone.propTypes = {
+  children: PropTypes.node
+}
+
 module.exports = Iphone

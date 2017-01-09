@@ -22,7 +22,6 @@ class CoreLayout extends Component {
     const coreLayoutHeight = document.getElementById('coreLayout').offsetHeight
     const headerHeight = header ? header.offsetHeight : 0
     const mainNavHeight = mainNav ? mainNav.offsetHeight : 0
-    console.log(mainNav)
     this.setState({
       mainHeight: coreLayoutHeight - headerHeight - mainNavHeight,
       mainPadding: `${headerHeight}px 0 ${mainNavHeight}px 0`
