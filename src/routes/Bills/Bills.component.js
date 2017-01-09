@@ -14,8 +14,6 @@ class Bills extends Component {
     fetchBills()
   }
   componentWillReceiveProps (nextProps) {
-    console.log('nextProps', nextProps.appShouldFetchContent)
-    console.log('nextPage', this.state.nextPage)
     if (nextProps.appShouldFetchContent && nextProps.appShouldFetchContent !== this.props.appShouldFetchContent) {
       this.props.fetchBills(this.state.nextPage)
       this.setState({ nextpage: ++this.state.nextPage })
@@ -26,7 +24,7 @@ class Bills extends Component {
     return (
       <div>
         <section id='bills-list'>
-          {bills && (bills.map((bill, i) => <Bill key={i} appId={i} {...bill} />))}
+          {bills && (bills.map((bill, i) => <Bill key={i} {...bill} />))}
         </section>
       </div>
     )
@@ -35,7 +33,8 @@ class Bills extends Component {
 
 Bills.propTypes = {
   fetchBills: PropTypes.func.isRequired,
-  bills: PropTypes.arrayOf(PropTypes.object)
+  bills: PropTypes.arrayOf(PropTypes.object),
+  appShouldFetchContent: PropTypes.bool.isRequired
 }
 
 module.exports = Bills

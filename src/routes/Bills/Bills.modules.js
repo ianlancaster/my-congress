@@ -8,7 +8,6 @@ let ACTION_HANDLERS = {}
 export const fetchBills = (pageNumber = 1) => {
   return (dispatch) => {
     dispatch(requestBills())
-    console.log(`http://localhost:3001/api/bills/${pageNumber}`)
     return fetch(`http://localhost:3001/api/bills/${pageNumber}`)
       .then(data => data.json())
       .then(json => dispatch(recieveBills(json)))
@@ -36,7 +35,6 @@ const recieveBills = (bills) => {
 ACTION_HANDLERS = {
   ...ACTION_HANDLERS,
   RECIEVE_BILLS: (state, action) => {
-    console.log('billstate', state)
     return {
       ...state,
       bills: [...state.bills, ...action.bills],

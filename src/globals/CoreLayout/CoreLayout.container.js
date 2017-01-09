@@ -6,4 +6,8 @@ const mapDispatchToProps = {
   fetchAdditionalContent
 }
 
-export default connect(null, mapDispatchToProps)(CoreLayout)
+const mapStateToProps = (state, ownProps) => ({
+  billsFetching: state.bills.fetching
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoreLayout)

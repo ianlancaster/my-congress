@@ -16,6 +16,11 @@ class CoreLayout extends Component {
     this.setContentViewportHeight()
     this.watchScrollActivity()
   }
+  componentWillReceiveProps (nextProps) {
+    if (!nextProps.billsFetching) {
+      this.props.fetchAdditionalContent(false)
+    }
+  }
   setContentViewportHeight () {
     const header = document.getElementById('header')
     const mainNav = document.getElementById('mainNav')
@@ -54,8 +59,8 @@ class CoreLayout extends Component {
   }
   loadMoreContent (e) {
     const { scrollHeight, scrollTop, offsetHeight } = e.srcElement
-    if (scrollHeight - scrollTop === offsetHeight) {
-      this.props.fetchAdditionalContent()
+    if (scrollHeight - scrollTop < offsetHeight + 300 && !this.props.billsFetching) {
+      this.props.fetchAdditionalContent(true)
     }
   }
   render () {
@@ -75,7 +80,8 @@ class CoreLayout extends Component {
 
 CoreLayout.propTypes = {
   children: PropTypes.node,
-  fetchAdditionalContent: PropTypes.func.isRequired
+  fetchAdditionalContent: PropTypes.func.isRequired,
+  billsFetching: PropTypes.bool
 }
 
 module.exports = CoreLayout
