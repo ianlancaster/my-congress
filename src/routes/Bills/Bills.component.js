@@ -5,17 +5,20 @@ import Bill from 'globals/Bill'
 class Bills extends Component {
   constructor () {
     super()
-    this.state = {}
+    this.state = {
+      nextPage: 2
+    }
   }
   componentWillMount () {
     const { fetchBills } = this.props
     fetchBills()
   }
-  componentDidMount () {
-    const main = document.getElementById('main')
-    console.log(main)
-    main.onscroll = e => {
-      console.log(e)
+  componentWillReceiveProps (nextProps) {
+    console.log('nextProps', nextProps.appShouldFetchContent)
+    console.log('nextPage', this.state.nextPage)
+    if (nextProps.appShouldFetchContent && nextProps.appShouldFetchContent !== this.props.appShouldFetchContent) {
+      this.props.fetchBills(this.state.nextPage)
+      this.setState({ nextpage: ++this.state.nextPage })
     }
   }
   render () {
@@ -23,7 +26,7 @@ class Bills extends Component {
     return (
       <div>
         <section id='bills-list'>
-          {bills && (bills.map((bill, i) => <Bill key={i} {...bill} />))}
+          {bills && (bills.map((bill, i) => <Bill key={i} appId={i} {...bill} />))}
         </section>
       </div>
     )

@@ -5,10 +5,11 @@ import fetch from 'isomorphic-fetch'
 // ------------------------------------
 let ACTION_HANDLERS = {}
 
-export const fetchBills = () => {
+export const fetchBills = (pageNumber = 1) => {
   return (dispatch) => {
     dispatch(requestBills())
-    return fetch('http://localhost:3001/api/bills')
+    console.log(`http://localhost:3001/api/bills/${pageNumber}`)
+    return fetch(`http://localhost:3001/api/bills/${pageNumber}`)
       .then(data => data.json())
       .then(json => dispatch(recieveBills(json)))
       .catch(err => dispatch(recieveErr(err)))
@@ -26,20 +27,22 @@ ACTION_HANDLERS = {
   })
 }
 
-const recieveBills = (json) => {
-  console.log(json)
+const recieveBills = (bills) => {
   return {
     type: 'RECIEVE_BILLS',
-    payload: json
+    bills
   }
 }
 ACTION_HANDLERS = {
   ...ACTION_HANDLERS,
-  RECIEVE_BILLS: (state, action) => ({
-    ...state,
-    bills: action.payload,
-    fetching: false
-  })
+  RECIEVE_BILLS: (state, action) => {
+    console.log('billstate', state)
+    return {
+      ...state,
+      bills: [...state.bills, ...action.bills],
+      fetching: false
+    }
+  }
 }
 
 const recieveErr = (err) => ({

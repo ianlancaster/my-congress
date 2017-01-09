@@ -55,7 +55,7 @@ class CoreLayout extends Component {
   loadMoreContent (e) {
     const { scrollHeight, scrollTop, offsetHeight } = e.srcElement
     if (scrollHeight - scrollTop === offsetHeight) {
-      console.log('ping')
+      this.props.fetchAdditionalContent()
     }
   }
   render () {
@@ -74,7 +74,8 @@ class CoreLayout extends Component {
 }
 
 CoreLayout.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  fetchAdditionalContent: PropTypes.func.isRequired
 }
 
 module.exports = CoreLayout

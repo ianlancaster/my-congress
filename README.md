@@ -36,11 +36,11 @@ PHASES:
 
     🌝 Implement iPhone container frame
     🌝 Implement top and bottom app navigation.
-    🌔 Display a list of bill preview components (cards) that show name
+    🌝 Display a list of bill preview components (cards) that show name
      Bill identifier
-    🌑 Bill introduction date
-    🌑 Last activity date
-    🌑 Bill status indicator
+    🌝 Bill introduction date
+    🌝 Last activity date
+    🌝 Bill status indicator
     🌑 Categorize bills and add tags
 
   Phase 2: Sorting and filtering
