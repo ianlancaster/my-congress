@@ -34,18 +34,28 @@ class CoreLayout extends Component {
   watchScrollActivity () {
     const main = document.getElementById('main')
     main.onscroll = (e) => {
-      if (this.state.scrollTop < e.srcElement.scrollTop) {
-        this.setState({ downScroll: ++this.state.downScroll })
-      } else {
-        this.setState({ downScroll: 0 })
-      }
-      if (this.state.downScroll > 25) {
-        this.setState({ showNav: false })
-      } else {
-        this.setState({ showNav: true })
-      }
+      this.loadMoreContent(e)
+      this.hideNavigation(e)
       this.setContentViewportHeight()
-      this.setState({ scrollTop: e.srcElement.scrollTop })
+    }
+  }
+  hideNavigation (e) {
+    if (this.state.scrollTop < e.srcElement.scrollTop) {
+      this.setState({ downScroll: ++this.state.downScroll })
+    } else {
+      this.setState({ downScroll: 0 })
+    }
+    if (this.state.downScroll > 25) {
+      this.setState({ showNav: false })
+    } else {
+      this.setState({ showNav: true })
+    }
+    this.setState({ scrollTop: e.srcElement.scrollTop })
+  }
+  loadMoreContent (e) {
+    const { scrollHeight, scrollTop, offsetHeight } = e.srcElement
+    if (scrollHeight - scrollTop === offsetHeight) {
+      console.log('ping')
     }
   }
   render () {

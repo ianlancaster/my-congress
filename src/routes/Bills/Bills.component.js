@@ -11,6 +11,13 @@ class Bills extends Component {
     const { fetchBills } = this.props
     fetchBills()
   }
+  componentDidMount () {
+    const main = document.getElementById('main')
+    console.log(main)
+    main.onscroll = e => {
+      console.log(e)
+    }
+  }
   render () {
     const { bills } = this.props
     return (
