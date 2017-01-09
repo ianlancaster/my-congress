@@ -9,6 +9,7 @@ class CoreLayout extends Component {
     this.state = {
       mainHeight: 400,
       scrollTop: 0,
+      downScroll: 0,
       showNav: true
     }
   }
@@ -35,6 +36,11 @@ class CoreLayout extends Component {
     const main = document.getElementById('main')
     main.onscroll = (e) => {
       if (this.state.scrollTop < e.srcElement.scrollTop) {
+        this.setState({ downScroll: ++this.state.downScroll })
+      } else {
+        this.setState({ downScroll: 0 })
+      }
+      if (this.state.downScroll > 25) {
         this.setState({ showNav: false })
       } else {
         this.setState({ showNav: true })
