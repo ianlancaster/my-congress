@@ -16,7 +16,7 @@ class Bills extends Component {
     return (
       <div>
         <section id='bills-list'>
-          {bills && (bills.map((bill, i) => <Bill key={i} billName={bill.official_title} />))}
+          {bills && (bills.map((bill, i) => <Bill key={i} {...bill} />))}
         </section>
       </div>
     )
