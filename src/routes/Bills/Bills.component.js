@@ -3,13 +3,18 @@ import classes from './Bills.styles.scss'
 import Bill from 'globals/Bill'
 
 class Bills extends Component {
+  constructor () {
+    super()
+    this.state = {}
+  }
+  componentWillMount () {
+    const { fetchBills } = this.props
+    fetchBills()
+  }
   render () {
-    const { showBills, billNames, fetchBills } = this.props
+    const { billNames } = this.props
     return (
       <div>
-        <h1 className={classes.bill}>Bills</h1>
-        <button onClick={showBills}>Show Bills</button>
-        <button onClick={fetchBills}>Fetch Actual Bills</button>
         <section id='bills-list'>
           {billNames && (billNames.map((billName, i) => <Bill key={i} billName={billName} />))}
         </section>

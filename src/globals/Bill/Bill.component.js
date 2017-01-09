@@ -3,9 +3,9 @@ import classes from './Bill.styles.scss'
 
 const Bill = ({ billName }) => {
   return (
-    <div>
+    <article className={classes.billCard}>
       <h2>{billName}</h2>
-    </div>
+    </article>
   )
 }
 
