@@ -19,7 +19,7 @@ const config = {
   dir_dist   : 'dist',
   dir_public : 'public',
   dir_server : 'server',
-  dir_test   : 'tests',
+  dir_test   : 'src',
 
   // ----------------------------------
   // Server Configuration

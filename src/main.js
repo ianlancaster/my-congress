@@ -6,6 +6,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import createStore from './store/createStore'
 import { Provider } from 'react-redux'
 import 'styles/core.scss'
+require('utilities/consoleSave')
 
 const MOUNT_ELEMENT = document.getElementById('root')
 

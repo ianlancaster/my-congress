@@ -1,21 +1,3 @@
-// import React from 'react'
-// import { Router, Route, hashHistory } from 'react-router'
-//
-// import CoreLayout from '../globals/CoreLayout'
-// import Bills from './Bills'
-//
-// const Routes = (props) => {
-//   return (
-//     <Router {...props} history={hashHistory}>
-//       <Route path='/' component={CoreLayout}>
-//         {Bills()}
-//       </Route>
-//     </Router>
-//   )
-// }
-//
-// export default Routes
-
 import Iphone from 'globals/Iphone'
 
 export const createRoutes = (store) => {
