@@ -15,9 +15,10 @@ export const fetchBills = (pageNumber = 1) => {
   }
 }
 
-const requestBills = () => ({
+export const requestBills = () => ({
   type: 'REQUEST_BILLS'
 })
+
 ACTION_HANDLERS = {
   ...ACTION_HANDLERS,
   REQUEST_BILLS: (state) => ({
@@ -26,12 +27,13 @@ ACTION_HANDLERS = {
   })
 }
 
-const recieveBills = (bills) => {
+export const recieveBills = (bills) => {
   return {
     type: 'RECIEVE_BILLS',
     bills
   }
 }
+
 ACTION_HANDLERS = {
   ...ACTION_HANDLERS,
   RECIEVE_BILLS: (state, action) => {
@@ -43,15 +45,16 @@ ACTION_HANDLERS = {
   }
 }
 
-const recieveErr = (err) => ({
+export const recieveErr = (err) => ({
   type: 'RECIEVE_ERR',
-  payload: err
+  err
 })
+
 ACTION_HANDLERS = {
   ...ACTION_HANDLERS,
   RECIEVE_ERR: (state, action) => ({
     ...state,
-    err: action.payload,
+    err: action.err,
     fetching: false
   })
 }
