@@ -263,4 +263,6 @@ if (!__DEV__) {
   )
 }
 
+webpackConfig.node = { fs: 'empty' }
+
 module.exports = webpackConfig

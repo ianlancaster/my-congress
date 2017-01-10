@@ -1,14 +1,28 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { expect } from 'chai'
+// import { expect } from 'chai'
 import { shallow, mount } from 'enzyme'
 import sinon from 'sinon'
 import createFakeStore from 'utilities/createFakeStore'
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
+
+const chai = require('chai')
+const chaiAsPromised = require('chai-as-promised')
+chai.use(chaiAsPromised)
+const expect = chai.expect
 
 import BillsContainer from './Bills.container'
 import BillsComponent from './Bills.component'
 import billsData from './Bills.data'
 import billsReducer, { fetchBills, requestBills, recieveBills, recieveErr } from './Bills.modules'
+
+import Promise from 'promise-polyfill'
+
+// To add to window
+if (!window.Promise) {
+  window.Promise = Promise
+}
 
 describe('BILLS TESTS', () => {
   const setup = () => {
@@ -98,6 +112,48 @@ describe('BILLS TESTS', () => {
       }
 
       expect(recieveErr('test error')).to.deep.equal(expectedAction)
+    })
+  })
+
+  context('Bills async actions', () => {
+    const middlewares = [ thunk ]
+    const mockStore = configureMockStore(middlewares)
+
+    let server
+
+    it('should actually run an async test', () => {
+      before(() => {
+        server = sinon.fakeServer.create()
+        const response = [200, { 'Content-type': 'application/json' }, billsData]
+        server.respondWith('GET', 'http://localhost:3001/api/bills/1', JSON.stringify(response))
+      })
+
+      after(() => {
+        server.restore()
+      })
+
+      let expectedActions = [
+        { type: 'REQUEST_BILLS' },
+        { type: 'RECIEVE_BILLS', bills: billsData }
+      ]
+      const store = mockStore({
+        bills: { bills: billsData },
+        coreLayout: { appShouldFetchContent: false }
+      })
+
+      return store.dispatch(fetchBills())
+        .then(() => {
+          return Promise.resolve(store.getActions())
+        })
+        .then((resolved) => {
+          console.log('PROMIS: ', Promise.resolve(store.getActions()))
+          console.log('RESOLV: ', resolved)
+          console.log('EXPECT: ', expectedActions)
+          return expect(Promise.resolve(store.getActions())).to.eventually.deep.equal(expectedActions)
+          // return expect(Promise.resolve(resolved)).to.eventually.deep.equal(expectedActions)
+          // return expect(resolved).to.eventually.deep.equal(expectedActions)
+          // expect(resolved).to.deep.equal(expectedActions)
+        })
     })
   })
 
