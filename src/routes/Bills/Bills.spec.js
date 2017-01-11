@@ -1,28 +1,20 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-// import { expect } from 'chai'
+import { expect } from 'chai'
 import { shallow, mount } from 'enzyme'
 import sinon from 'sinon'
-import createFakeStore from 'utilities/createFakeStore'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-
-const chai = require('chai')
-const chaiAsPromised = require('chai-as-promised')
-chai.use(chaiAsPromised)
-const expect = chai.expect
+import Promise from 'promise-polyfill'
+// Add Promise to window
+if (!window.Promise) {
+  window.Promise = Promise
+}
 
 import BillsContainer from './Bills.container'
 import BillsComponent from './Bills.component'
 import billsData from './Bills.data'
-import billsReducer, { fetchBills, requestBills, RECEIVEBills, RECEIVEErr } from './Bills.modules'
-
-import Promise from 'promise-polyfill'
-
-// To add to window
-if (!window.Promise) {
-  window.Promise = Promise
-}
+import billsReducer, { fetchBills, requestBills, receiveBills, reveiveErr } from './Bills.modules'
 
 describe('BILLS TESTS', () => {
   const setup = () => {
@@ -32,7 +24,9 @@ describe('BILLS TESTS', () => {
       appShouldFetchContent: false
     }
 
-    const fakeStore = createFakeStore({
+    const newStore = configureMockStore([thunk])
+
+    const fakeStore = newStore({
       bills: { bills: billsData },
       coreLayout: { appShouldFetchContent: false }
     })
@@ -48,30 +42,29 @@ describe('BILLS TESTS', () => {
     return {
       ContainerWrapper,
       ComponentWrapper,
-      props
+      props,
+      fakeStore
     }
   }
 
   context('Bills container', () => {
+    const { ContainerWrapper } = setup()
     it('should render the Bills component', () => {
-      const { ContainerWrapper } = setup()
       expect(ContainerWrapper).to.exist
     })
 
     it('should render 20 bill components when mounted', () => {
-      const { ContainerWrapper } = setup()
       expect(ContainerWrapper.find('article').length).to.equal(20)
     })
   })
 
   context('Bills component', () => {
+    const { ComponentWrapper, props } = setup()
     it('should call fetchBills once when mounted', () => {
-      const { ComponentWrapper, props } = setup()
       expect(props.fetchBills).to.have.property('callCount', 1)
     })
 
-    it('should call fetchBills again props.appShouldFetchContent is changed to true', () => {
-      const { ComponentWrapper, props } = setup()
+    it('should call fetchBills again when props.appShouldFetchContent is changed to true', () => {
       expect(props.fetchBills).to.have.property('callCount', 1)
       ComponentWrapper.setProps({ appShouldFetchContent: true })
       expect(props.fetchBills).to.have.property('callCount', 2)
@@ -79,13 +72,13 @@ describe('BILLS TESTS', () => {
   })
 
   context('Bills action creators', () => {
-    it('Should export five functions: fetchBills, billsReducer, RECEIVEErr, RECEIVEBills, requestBills', () => {
-      // module exports imported at top of file
-      expect(fetchBills).to.a('function')
-      expect(billsReducer).to.a('function')
-      expect(RECEIVEErr).to.a('function')
-      expect(RECEIVEBills).to.a('function')
-      expect(requestBills).to.a('function')
+    it('Should export five functions: fetchBills, billsReducer, reveiveErr, receiveBills, requestBills', () => {
+      // imported at top of file
+      expect(fetchBills).to.be.a('function')
+      expect(billsReducer).to.be.a('function')
+      expect(reveiveErr).to.be.a('function')
+      expect(receiveBills).to.be.a('function')
+      expect(requestBills).to.be.a('function')
     })
 
     it('requestBills() should take no parameters and return a proper REQUEST_BILLS action object', () => {
@@ -96,32 +89,30 @@ describe('BILLS TESTS', () => {
       expect(requestBills()).to.deep.equal(expectedAction)
     })
 
-    it('RECEIVEBills() should take a bills array as a parameter and return a proper RECEIVE_BILLS action object', () => {
+    it('receiveBills() should take a bills array as a parameter and return a proper RECEIVE_BILLS action object', () => {
       const expectedAction = {
         type: 'RECEIVE_BILLS',
         bills: billsData
       }
 
-      expect(RECEIVEBills(billsData)).to.deep.equal(expectedAction)
+      expect(receiveBills(billsData)).to.deep.equal(expectedAction)
     })
 
-    it('RECEIVEErr() should take no parameters and return a proper RECEIVE_ERR action object', () => {
+    it('reveiveErr() should take no parameters and return a proper RECEIVE_ERR action object', () => {
       const expectedAction = {
         type: 'RECEIVE_ERR',
         err: 'test error'
       }
 
-      expect(RECEIVEErr('test error')).to.deep.equal(expectedAction)
+      expect(reveiveErr('test error')).to.deep.equal(expectedAction)
     })
   })
 
   context('Bills async actions', () => {
-    const middlewares = [ thunk ]
-    const mockStore = configureMockStore(middlewares)
-
     // let server
-
+    const { fakeStore } = setup()
     it('fetchBills() should dispatch a REQUEST_BILLS action and a bill-populated RECEIVE_BILLS action', () => {
+      // // sinon not functioning. Come back and fix later
       // before(() => {
       //   server = sinon.fakeServer.create()
       //   const response = [200, { 'Content-type': 'application/json' }, billsData]
@@ -136,22 +127,13 @@ describe('BILLS TESTS', () => {
         { type: 'REQUEST_BILLS' },
         { type: 'RECEIVE_BILLS', bills: billsData }
       ]
-      const store = mockStore({
-        bills: { bills: billsData },
-        coreLayout: { appShouldFetchContent: false }
-      })
 
-      return store.dispatch(fetchBills())
+      return fakeStore.dispatch(fetchBills())
         .then(() => {
-          return Promise.resolve(store.getActions())
+          // return expect(Promise.resolve(fakeStore.getActions())).to.eventually.deep.equal(expectedActions)
+          return Promise.resolve(fakeStore.getActions())
         })
         .then((resolved) => {
-          // console.log('PROMIS: ', Promise.resolve(store.getActions()))
-          // console.log('RESOLV: ', resolved)
-          // console.log('EXPECT: ', expectedActions)
-          // return expect(Promise.resolve(store.getActions())[0]).to.eventually.deep.equal(expectedActions[0])
-          // return expect(Promise.resolve(resolved)).to.eventually.deep.equal(expectedActions)
-          // return expect(resolved).to.eventually.deep.equal(expectedActions)
           expect(resolved[0]).to.deep.equal(expectedActions[0])
           expect(resolved[1].length).to.deep.equal(expectedActions[1].length)
         })
@@ -175,7 +157,7 @@ describe('BILLS TESTS', () => {
     })
 
     it('RECEIVE_BILLS | should append fetched bills to the bills array and set fetching to false', () => {
-      const RECEIVE_BILLS = RECEIVEBills(billsData)
+      const RECEIVE_BILLS = receiveBills(billsData)
 
       const initialState = {
         appShouldFetchContent: false,
@@ -193,7 +175,7 @@ describe('BILLS TESTS', () => {
     })
 
     it('RECEIVE_ERR | should return the error and set fetching to false', () => {
-      const RECEIVE_ERR = RECEIVEErr('test error')
+      const RECEIVE_ERR = reveiveErr('test error')
 
       const initialState = {
         appShouldFetchContent: false,

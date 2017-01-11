@@ -16,7 +16,7 @@ export const thunkExample = () => {
     return fetch('https://pre.domain.ext/endpoint')
       .then(data => data.json())
       .then(json => dispatch(RECEIVEThunk(json)))
-      .catch(err => dispatch(RECEIVEErr(err)))
+      .catch(err => dispatch(reveiveErr(err)))
   }
 }
 
@@ -45,7 +45,7 @@ ACTION_HANDLERS = {
   })
 }
 
-const RECEIVEErr = (err) => ({
+const reveiveErr = (err) => ({
   type: 'RECEIVE_ERR',
   payload: err
 })
@@ -70,7 +70,7 @@ export const ${2:thunkExample} = () => {
     return fetch('${4:https://pre.domain.ext/endpoint}')
       .then(data => data.json())
       .then(json => dispatch(${5:RECEIVEThunk}(json)))
-      .catch(err => dispatch(${6:RECEIVEErr}(err)))
+      .catch(err => dispatch(${6:reveiveErr}(err)))
   }
 }
 
@@ -99,7 +99,7 @@ ACTION_HANDLERS = {
   })
 }
 
-const ${6:RECEIVEErr} = (err) => ({
+const ${6:reveiveErr} = (err) => ({
   type: '${10:RECEIVE_ERR}',
   payload: err
 })
@@ -117,4 +117,4 @@ ${11}
 // // // ------------------------------------
 // // // GENERATED
 // // // ------------------------------------
-${1:import fetch from \'isomorphic-fetch\'}\n\nexport const ${2:thunkExample} = () => {\n\treturn (dispatch) => {\n\t\tdispatch(${3:requestThunk}())\n\t\treturn fetch(\'${4:https://pre.domain.ext/endpoint}\')\n\t\t\t.then(data => data.json())\n\t\t\t.then(json => dispatch(${5:RECEIVEThunk}(json)))\n\t\t\t.catch(err => dispatch(${6:RECEIVEErr}(err)))\n\t}\n}\n\nconst ${3:requestThunk} = () => ({\n\ttype: \'${7:REQUEST_THUNK}\'\n})\nACTION_HANDLERS = {\n\t...ACTION_HANDLERS,\n\t${7:REQUEST_THUNK}: (state) => ({\n\t\t...state,\n\t\tfetching: true\n\t})\n}\n\nconst ${5:RECEIVEThunk} = (json) => ({\n\ttype: \'${8:RECEIVE_THUNK}\',\n\tpayload: json\n})\nACTION_HANDLERS = {\n\t...ACTION_HANDLERS,\n\t${8:RECEIVE_THUNK}: (state, action) => ({\n\t\t...state,\n\t\t${9:existingStateArr: state.existingStateArr.push(action.payload),\n\t\tnewStateProp: action.payload.newStateProp,\n\t\tfetching: false}\n\t})\n}\n\nconst ${6:RECEIVEErr} = (err) => ({\n\ttype: \'${10:RECEIVE_ERR}\',\n\tpayload: err\n})\nACTION_HANDLERS = {\n\t...ACTION_HANDLERS,\n\t${10:RECEIVE_ERR}: (state, action) => ({\n\t\t...state,\n\t\terr: action.payload,\n\t\tfetching: false\n\t})\n}\n${11}
+${1:import fetch from \'isomorphic-fetch\'}\n\nexport const ${2:thunkExample} = () => {\n\treturn (dispatch) => {\n\t\tdispatch(${3:requestThunk}())\n\t\treturn fetch(\'${4:https://pre.domain.ext/endpoint}\')\n\t\t\t.then(data => data.json())\n\t\t\t.then(json => dispatch(${5:RECEIVEThunk}(json)))\n\t\t\t.catch(err => dispatch(${6:reveiveErr}(err)))\n\t}\n}\n\nconst ${3:requestThunk} = () => ({\n\ttype: \'${7:REQUEST_THUNK}\'\n})\nACTION_HANDLERS = {\n\t...ACTION_HANDLERS,\n\t${7:REQUEST_THUNK}: (state) => ({\n\t\t...state,\n\t\tfetching: true\n\t})\n}\n\nconst ${5:RECEIVEThunk} = (json) => ({\n\ttype: \'${8:RECEIVE_THUNK}\',\n\tpayload: json\n})\nACTION_HANDLERS = {\n\t...ACTION_HANDLERS,\n\t${8:RECEIVE_THUNK}: (state, action) => ({\n\t\t...state,\n\t\t${9:existingStateArr: state.existingStateArr.push(action.payload),\n\t\tnewStateProp: action.payload.newStateProp,\n\t\tfetching: false}\n\t})\n}\n\nconst ${6:reveiveErr} = (err) => ({\n\ttype: \'${10:RECEIVE_ERR}\',\n\tpayload: err\n})\nACTION_HANDLERS = {\n\t...ACTION_HANDLERS,\n\t${10:RECEIVE_ERR}: (state, action) => ({\n\t\t...state,\n\t\terr: action.payload,\n\t\tfetching: false\n\t})\n}\n${11}

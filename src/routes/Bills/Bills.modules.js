@@ -10,8 +10,8 @@ export const fetchBills = (pageNumber = 1) => {
     dispatch(requestBills())
     return fetch(`http://localhost:3001/api/bills/${pageNumber}`)
       .then(data => data.json())
-      .then(json => dispatch(RECEIVEBills(json)))
-      .catch(err => dispatch(RECEIVEErr(err)))
+      .then(json => dispatch(receiveBills(json)))
+      .catch(err => dispatch(reveiveErr(err)))
   }
 }
 
@@ -27,7 +27,7 @@ ACTION_HANDLERS = {
   })
 }
 
-export const RECEIVEBills = (bills) => {
+export const receiveBills = (bills) => {
   return {
     type: 'RECEIVE_BILLS',
     bills
@@ -45,7 +45,7 @@ ACTION_HANDLERS = {
   }
 }
 
-export const RECEIVEErr = (err) => ({
+export const reveiveErr = (err) => ({
   type: 'RECEIVE_ERR',
   err
 })
