@@ -33,7 +33,7 @@ class Bills extends Component {
 
 Bills.propTypes = {
   fetchBills: PropTypes.func.isRequired,
-  bills: PropTypes.arrayOf(PropTypes.object),
+  bills: PropTypes.arrayOf(PropTypes.object).isRequired,
   appShouldFetchContent: PropTypes.bool.isRequired
 }
 

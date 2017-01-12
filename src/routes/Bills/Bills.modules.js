@@ -10,14 +10,15 @@ export const fetchBills = (pageNumber = 1) => {
     dispatch(requestBills())
     return fetch(`http://localhost:3001/api/bills/${pageNumber}`)
       .then(data => data.json())
-      .then(json => dispatch(recieveBills(json)))
-      .catch(err => dispatch(recieveErr(err)))
+      .then(json => dispatch(receiveBills(json)))
+      .catch(err => dispatch(reveiveErr(err)))
   }
 }
 
-const requestBills = () => ({
+export const requestBills = () => ({
   type: 'REQUEST_BILLS'
 })
+
 ACTION_HANDLERS = {
   ...ACTION_HANDLERS,
   REQUEST_BILLS: (state) => ({
@@ -26,15 +27,16 @@ ACTION_HANDLERS = {
   })
 }
 
-const recieveBills = (bills) => {
+export const receiveBills = (bills) => {
   return {
-    type: 'RECIEVE_BILLS',
+    type: 'RECEIVE_BILLS',
     bills
   }
 }
+
 ACTION_HANDLERS = {
   ...ACTION_HANDLERS,
-  RECIEVE_BILLS: (state, action) => {
+  RECEIVE_BILLS: (state, action) => {
     return {
       ...state,
       bills: [...state.bills, ...action.bills],
@@ -43,15 +45,16 @@ ACTION_HANDLERS = {
   }
 }
 
-const recieveErr = (err) => ({
-  type: 'RECIEVE_ERR',
-  payload: err
+export const reveiveErr = (err) => ({
+  type: 'RECEIVE_ERR',
+  err
 })
+
 ACTION_HANDLERS = {
   ...ACTION_HANDLERS,
-  RECIEVE_ERR: (state, action) => ({
+  RECEIVE_ERR: (state, action) => ({
     ...state,
-    err: action.payload,
+    err: action.err,
     fetching: false
   })
 }
