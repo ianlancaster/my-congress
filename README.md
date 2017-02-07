@@ -9,6 +9,8 @@ A rough interactive prototype of the application can be found at the link below.
 
 https://invis.io/VJ9VWH3SG#/212448806_Login_Screen
 
+![We The People App Gif](https://media.giphy.com/media/l0ExpZgS7VrKJhn7G/giphy.gif)
+
 If you stumbled upon this repository looking for a production application I would highly suggest checking out countable.io . I did not discover countable until after I had designed the app, but the similarities are uncanny. They also have mobile apps.
 
 ## Set Up
@@ -16,10 +18,6 @@ If you stumbled upon this repository looking for a production application I woul
 To run the application clone down the repo and run `npm install` and `yarn install`. Start the server with `npm start` then the application will be ready on `http://localhost:3000`.
 
 ## Development
-
-Development of this app will be done in phases. Each phase of the app is listed below with its various requirements. GitHub issues will be created that mirror these requirements. Waffle.io will be used to track the progress of the various issues. The moon phase emoji's seen below will be updated to indicate development progress. A new moon means the issues has not been started yet, a full moon means it has been completed and merged into master.
-
-https://waffle.io/ianlancaster/we-the-people
 
 PHASES:
 
@@ -37,11 +35,15 @@ PHASES:
     🌝 Implement iPhone container frame
     🌝 Implement top and bottom app navigation.
     🌝 Display a list of bill preview components (cards) that show name
-     Bill identifier
+    🌝 Bill identifier
     🌝 Bill introduction date
     🌝 Last activity date
     🌝 Bill status indicator
+    🌝 Implement infinite scrolling that makes additional api calls
+    🌝 Hide navigation on scroll down to make more room for content
     🌑 Categorize bills and add tags
+
+  Note: Note I have halted additional progress on features until I can switch the repo over to react native. The app was always intended to be a mobile app first. Expect more updates in the coming months.
 
   Phase 2: Sorting and filtering
 
