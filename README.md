@@ -10,6 +10,7 @@ A rough interactive prototype of the application can be found at the link below.
 https://invis.io/VJ9VWH3SG#/212448806_Login_Screen
 
 ![We The People App Gif](https://media.giphy.com/media/l0ExpZgS7VrKJhn7G/giphy.gif)
+![We The People App Gif2](https://media.giphy.com/media/d3mlX9YfPeFlVn0Y/giphy.gif  )
 
 If you stumbled upon this repository looking for a production application I would highly suggest checking out countable.io . I did not discover countable until after I had designed the app, but the similarities are uncanny. They also have mobile apps.
 
