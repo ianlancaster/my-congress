@@ -1,5 +1,7 @@
 # We The People
 
+UPDATE: We The People has been selected as a group capstone project. A team of Mod3 and Mod4 front end Turing students will be working on building out the application in react native 2/15 - 3/1.
+
 ## About
 We The People is an app that makes keeping up with congress and voicing your opinion on legislation easy and meaningful. Enter in your voting address to identify your representatives, then choose categories of legislation that you care about. View all of the bills proposed by congress and track them along their journey to becoming law. Follow a bill that you are especially invested in to receive notifications when the bill's status changes. Easily and effectively voice your opinion about a bill by using the bill's 'take action' button. The best representative to contact about a bill will change depending on the status of the bill. The 'take action' button does the hard work for you by showing you which representative you need to contact and by offering multiple ways to contact the representative right from the app.
 
