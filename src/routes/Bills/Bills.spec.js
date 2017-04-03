@@ -2,6 +2,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { expect } from 'chai'
 import { shallow, mount } from 'enzyme'
+import nock from 'nock'
 import sinon from 'sinon'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
@@ -109,19 +110,15 @@ describe('BILLS TESTS', () => {
   })
 
   context('Bills async actions', () => {
-    // let server
     const { fakeStore } = setup()
     it('fetchBills() should dispatch a REQUEST_BILLS action and a bill-populated RECEIVE_BILLS action', () => {
-      // // sinon not functioning. Come back and fix later
-      // before(() => {
-      //   server = sinon.fakeServer.create()
-      //   const response = [200, { 'Content-type': 'application/json' }, billsData]
-      //   server.respondWith('GET', 'http://localhost:3001/api/bills/1', JSON.stringify(response))
-      // })
-      //
-      // after(() => {
-      //   server.restore()
-      // })
+      after(() => {
+        nock.cleanAll()
+      })
+
+      nock('http://localhost:3001/')
+        .get('/api/bills')
+        .reply(200, { body: billsData })
 
       let expectedActions = [
         { type: 'REQUEST_BILLS' },
@@ -129,10 +126,7 @@ describe('BILLS TESTS', () => {
       ]
 
       return fakeStore.dispatch(fetchBills())
-        .then(() => {
-          // return expect(Promise.resolve(fakeStore.getActions())).to.eventually.deep.equal(expectedActions)
-          return Promise.resolve(fakeStore.getActions())
-        })
+        .then(() => Promise.resolve(fakeStore.getActions()))
         .then((resolved) => {
           expect(resolved[0]).to.deep.equal(expectedActions[0])
           expect(resolved[1].length).to.deep.equal(expectedActions[1].length)
