@@ -2,6 +2,10 @@
 
 UPDATE: We The People has been selected as a group capstone project. A team of Mod3 and Mod4 front end Turing students will be working on building out the application in react native 2/15 - 3/1.
 
+UPDATE 2: The application has been rebuilt in react native by Ian Lancaster and Graham Nessler. We are submitting in in the Turing School demo competition scheduled for 3/15/17.
+
+UPDATE 3: We The People has been officially renamed MyGov (apparently a small company called 'The White House' took We The People already). MyGov took 1st place in the Turing School demo competition! We are currently planning a live deployment for iOS and web for the begging of June 2017. The project has also been officially moved to the [MyGov organization page](). Please look their for future updates.
+
 ## About
 We The People is an app that makes keeping up with congress and voicing your opinion on legislation easy and meaningful. Enter in your voting address to identify your representatives, then choose categories of legislation that you care about. View all of the bills proposed by congress and track them along their journey to becoming law. Follow a bill that you are especially invested in to receive notifications when the bill's status changes. Easily and effectively voice your opinion about a bill by using the bill's 'take action' button. The best representative to contact about a bill will change depending on the status of the bill. The 'take action' button does the hard work for you by showing you which representative you need to contact and by offering multiple ways to contact the representative right from the app.
 
@@ -12,7 +16,7 @@ A rough interactive prototype of the application can be found at the link below.
 https://invis.io/VJ9VWH3SG#/212448806_Login_Screen
 
 ![We The People App Gif](https://media.giphy.com/media/l0ExpZgS7VrKJhn7G/giphy.gif)
-![We The People App Gif2](https://media.giphy.com/media/d3mlX9YfPeFlVn0Y/giphy.gif  )
+![We The People App Gif2](https://media.giphy.com/media/d3mlX9YfPeFlVn0Y/giphy.gif)
 
 If you stumbled upon this repository looking for a production application I would highly suggest checking out countable.io . I did not discover countable until after I had designed the app, but the similarities are uncanny. They also have mobile apps.
 
